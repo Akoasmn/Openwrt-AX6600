@@ -1,5 +1,5 @@
 #科学插件调整
-#CONFIG_PACKAGE_luci-app-homeproxy=y
+CONFIG_PACKAGE_luci-app-homeproxy=y
 #增加插件
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-netspeedtest=n
@@ -15,23 +15,22 @@ CONFIG_PACKAGE_luci-app-firewall4=y
 CONFIG_PACKAGE_firewall4=y
 
 # 可视化磁盘管理面板
-#CONFIG_PACKAGE_luci-app-diskman=y
-#CONFIG_PACKAGE_diskinfo=y
+CONFIG_PACKAGE_luci-app-diskman=y
+CONFIG_PACKAGE_diskinfo=y
+
+CONFIG_PACKAGE_luci-app-quickfile=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+CONFIG_PACKAGE_luci-app-tailscale=y
+CONFIG_PACKAGE_luci-app-lucky=y
 
 # IPv6 NDP代理
-CONFIG_PACKAGE_kmod-nft-ndp=y
-CONFIG_PACKAGE_luci-app-ndppd=y
-CONFIG_PACKAGE_ndppd=y
+#CONFIG_PACKAGE_kmod-nft-ndp=y
+#CONFIG_PACKAGE_luci-app-ndppd=y
+#CONFIG_PACKAGE_ndppd=y
 
-# 多核中断均衡，减少单核心满载导致的延迟波动
-CONFIG_PACKAGE_kmod-irq-balance=y
-# 补充ipv6路由底层支撑，优化v6转发效率
-CONFIG_PACKAGE_kmod-nft-route=y
-# 本地路由缓存优化，提升内网转发速度
-CONFIG_PACKAGE_kmod-fib-trie=y
 # 自动端口映射，下载游戏好用，日常上网可关掉省资源
-#CONFIG_PACKAGE_luci-app-upnp=y
-#CONFIG_PACKAGE_miniupnpd=y
+CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_PACKAGE_miniupnpd=y
 
 CONFIG_PACKAGE_kmod-nf-ipt=n
 CONFIG_PACKAGE_iptables=n
