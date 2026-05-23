@@ -45,7 +45,7 @@ jobs:
       #默认主题
       #WRT_THEME: aurora
       #WRT_THEME: bootstrap
-      WRT_THEME: Argon
+      WRT_THEME: argon
       #默认主机名
       WRT_NAME: IWRT
       #默认WIFI名称
