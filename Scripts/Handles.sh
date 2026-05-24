@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "==================正在执行Handles.sh=================="
 # PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
 
 # #预置HomeProxy数据
@@ -36,7 +36,7 @@
 # fi
 
 # 删除turboacc的SFE依赖，避免coremark错误
-if [ -d *"luci-app-turboacc"* ]; then
+if [ -d *"turboacc"* ]; then
     echo "正在强制重写 TurboACC Makefile 以移除 SFE 强依赖..."
 	TURBOACC_MAKEFILE=$(find . -maxdepth 3 -type f -iname "Makefile" -wholename "*luci-app-turboacc*")
     # 这一行命令会查找 LUCI_DEPENDS 这一行

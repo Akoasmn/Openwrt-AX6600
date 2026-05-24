@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "==================正在执行Packages.sh=================="
 #安装和更新软件包
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
