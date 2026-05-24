@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
+# PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
 
 # #预置HomeProxy数据
 # if [ -d *"homeproxy"* ]; then
@@ -36,12 +36,9 @@ PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
 # fi
 
 # 删除turboacc的SFE依赖，避免coremark错误
-# 定义 Makefile 路径
-TURBOACC_MAKEFILE="package/turboacc/luci-app-turboacc/Makefile"
-
-if [ -f "$TURBOACC_MAKEFILE" ]; then
+if [ -d *"luci-app-turboacc"* ]; then
     echo "正在强制重写 TurboACC Makefile 以移除 SFE 强依赖..."
-    
+	TURBOACC_MAKEFILE=$(find . -maxdepth 3 -type f -iname "Makefile" -wholename "*luci-app-turboacc*")
     # 这一行命令会查找 LUCI_DEPENDS 这一行
     # 并将所有关于 kmod-fast-classifier, kmod-shortcut-fe-cm, kmod-shortcut-fe-drv 的依赖项全部删掉
     sed -i '/LUCI_DEPENDS:=/s/+PACKAGE_$(PKG_NAME)_INCLUDE_SHORTCUT_FE:kmod-fast-classifier//g' "$TURBOACC_MAKEFILE"
