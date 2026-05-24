@@ -36,13 +36,13 @@ fi
 # fi
 
 # 删除turboacc的SFE依赖，避免coremark错误
-if [ -d *"luci-app-turboacc"* ]; then
-    echo "正在移除 TurboACC 的 SFE 依赖..."
-    sed -i 's/+kmod-shortcut-fe-drv//g' package/turboacc/luci-app-turboacc/Makefile
-    sed -i 's/+kmod-shortcut-fe-cm//g' package/turboacc/luci-app-turboacc/Makefile
-    sed -i 's/+kmod-fast-classifier//g' package/turboacc/luci-app-turboacc/Makefile
-	cd $PKG_PATH && echo "TurboACC 的 SFE 依赖已移除"
-fi
+# if [ -d *"luci-app-turboacc"* ]; then
+#     echo "正在移除 TurboACC 的 SFE 依赖..."
+#     sed -i 's/+kmod-shortcut-fe-drv//g' package/turboacc/luci-app-turboacc/Makefile
+#     sed -i 's/+kmod-shortcut-fe-cm//g' package/turboacc/luci-app-turboacc/Makefile
+#     sed -i 's/+kmod-fast-classifier//g' package/turboacc/luci-app-turboacc/Makefile
+# 	cd $PKG_PATH && echo "TurboACC 的 SFE 依赖已移除"
+# fi
 
 #修改qca-nss-drv启动顺序
 NSS_DRV="../feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init"
