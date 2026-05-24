@@ -36,13 +36,23 @@ fi
 # fi
 
 # 删除turboacc的SFE依赖，避免coremark错误
-# if [ -d *"luci-app-turboacc"* ]; then
-#     echo "正在移除 TurboACC 的 SFE 依赖..."
-#     sed -i 's/+kmod-shortcut-fe-drv//g' package/turboacc/luci-app-turboacc/Makefile
-#     sed -i 's/+kmod-shortcut-fe-cm//g' package/turboacc/luci-app-turboacc/Makefile
-#     sed -i 's/+kmod-fast-classifier//g' package/turboacc/luci-app-turboacc/Makefile
-# 	cd $PKG_PATH && echo "TurboACC 的 SFE 依赖已移除"
-# fi
+# 定义 Makefile 路径
+TURBOACC_MAKEFILE="package/turboacc/luci-app-turboacc/Makefile"
+
+if [ -f "$TURBOACC_MAKEFILE" ]; then
+    echo "正在强制重写 TurboACC Makefile 以移除 SFE 强依赖..."
+    
+    # 这一行命令会查找 LUCI_DEPENDS 这一行
+    # 并将所有关于 kmod-fast-classifier, kmod-shortcut-fe-cm, kmod-shortcut-fe-drv 的依赖项全部删掉
+    sed -i '/LUCI_DEPENDS:=/s/+PACKAGE_$(PKG_NAME)_INCLUDE_SHORTCUT_FE:kmod-fast-classifier//g' "$TURBOACC_MAKEFILE"
+    sed -i '/LUCI_DEPENDS:=/s/+PACKAGE_$(PKG_NAME)_INCLUDE_SHORTCUT_FE_CM:kmod-shortcut-fe-cm//g' "$TURBOACC_MAKEFILE"
+    sed -i '/LUCI_DEPENDS:=/s/+PACKAGE_$(PKG_NAME)_INCLUDE_SHORTCUT_FE_DRV:kmod-shortcut-fe-drv//g' "$TURBOACC_MAKEFILE"
+    
+    # 清理掉可能残留的连续加号或逗号
+    sed -i 's/,,/,/g; s/ + / /g' "$TURBOACC_MAKEFILE"
+    
+    echo "TurboACC Makefile 依赖已修正！"
+fi
 
 #修改qca-nss-drv启动顺序
 NSS_DRV="../feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init"
