@@ -145,13 +145,6 @@ jobs:
             echo "caches cleanup done!"
           fi
           
-      - name: Custom Packages
-        run: |
-          cd ./wrt/package/
-
-          $GITHUB_WORKSPACE/Scripts/Packages.sh
-          $GITHUB_WORKSPACE/Scripts/Handles.sh
-          
       - name: Update Feeds
         run: |
           cd ./wrt/
@@ -160,6 +153,13 @@ jobs:
           ./scripts/feeds install -a
           # 额外强制安装缺失的 python 依赖
           ./scripts/feeds install -f python3-pysocks python3-unidecode
+
+      - name: Custom Packages
+        run: |
+          cd ./wrt/package/
+
+          $GITHUB_WORKSPACE/Scripts/Packages.sh
+          # $GITHUB_WORKSPACE/Scripts/Handles.sh
 
       - name: Custom Settings
         run: |
