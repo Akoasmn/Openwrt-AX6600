@@ -63,7 +63,8 @@ UPDATE_PACKAGE() {
 
 UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
 UPDATE_PACKAGE "luci-app-turboacc" "akoasmn/turboacc" "luci"
-UPDATE_PACKAGE "luci-app-quickstart" "animegasan/luci-app-quickstart" "main"
+#UPDATE_PACKAGE "luci-app-quickstart" "animegasan/luci-app-quickstart" "main"
+UPDATE_PACKAGE "luci-app-webdav" "sbwml/luci-app-webdav" "openwrt-24.10"
 
 #UPDATE_PACKAGE "ddns-go" "sirpdboy/luci-app-ddns-go" "main"
 #UPDATE_PACKAGE "diskman" "lisaac/luci-app-diskman" "master"
